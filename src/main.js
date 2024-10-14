@@ -34,6 +34,11 @@ document.getElementById("search-form").addEventListener("submit", e => {
     const form = e.currentTarget;
     const queryStr = form.elements.queryStr.value.trim();
 
+    if (queryStr === "") {
+        form.reset();
+        return; // do nothing for empty query string
+    }
+
     theLoader.classList.add("is-open");
     theGallery.innerHTML = '';
     searchPhotos(queryStr)
